@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://localhost/payroll_system/server/open_attendance/server.php" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="AttendanceService" targetNamespace="http://localhost/payroll_system/server/open_attendance/server.php">
+  <types>
+    <xsd:schema targetNamespace="http://localhost/payroll_system/server/open_attendance/server.php">
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+    </xsd:schema>
+  </types>
+  <portType name="AttendanceServicePort">
+    <operation name="__construct">
+      <input message="tns:__constructIn"/>
+    </operation>
+    <operation name="getAttendanceHistory">
+      <documentation>Mendapatkan seluruh riwayat absensi.</documentation>
+      <input message="tns:getAttendanceHistoryIn"/>
+      <output message="tns:getAttendanceHistoryOut"/>
+    </operation>
+    <operation name="getActiveAttendance">
+      <documentation>Mendapatkan data absensi yang statusnya aktif.</documentation>
+      <input message="tns:getActiveAttendanceIn"/>
+      <output message="tns:getActiveAttendanceOut"/>
+    </operation>
+  </portType>
+  <binding name="AttendanceServiceBinding" type="tns:AttendanceServicePort">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="__construct">
+      <soap:operation soapAction="http://localhost/payroll_system/server/open_attendance/server.php#__construct"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/payroll_system/server/open_attendance/server.php"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/payroll_system/server/open_attendance/server.php"/>
+      </output>
+    </operation>
+    <operation name="getAttendanceHistory">
+      <soap:operation soapAction="http://localhost/payroll_system/server/open_attendance/server.php#getAttendanceHistory"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/payroll_system/server/open_attendance/server.php"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/payroll_system/server/open_attendance/server.php"/>
+      </output>
+    </operation>
+    <operation name="getActiveAttendance">
+      <soap:operation soapAction="http://localhost/payroll_system/server/open_attendance/server.php#getActiveAttendance"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/payroll_system/server/open_attendance/server.php"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/payroll_system/server/open_attendance/server.php"/>
+      </output>
+    </operation>
+  </binding>
+  <message name="__constructIn">
+    <part name="pdo" type="xsd:anyType"/>
+  </message>
+  <message name="getAttendanceHistoryIn"/>
+  <message name="getAttendanceHistoryOut">
+    <part name="return" type="soap-enc:Array"/>
+  </message>
+  <message name="getActiveAttendanceIn"/>
+  <message name="getActiveAttendanceOut">
+    <part name="return" type="soap-enc:Array"/>
+  </message>
+  <service name="AttendanceServiceService">
+    <port name="AttendanceServicePort" binding="tns:AttendanceServiceBinding">
+      <soap:address location="http://localhost/payroll_system/server/open_attendance/server.php"/>
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payroll System</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <style class=""></style> -->
+</head>
+
+<body>
+    <header class="header">
+        <h1>Payroll System</h1>
+    </header>
+
+    <main class="main-content">
+
+
+        <section id="attendance" class="section">
+            <h2>Pembukaan Absensi</h2>
+            <button id="openAttendance" class="btn">Buka Absensi</button>
+            <p id="attendanceStatus" class="status">Status: Belum Dibuka</p>
+
+            <div id="attendanceForm" style="display: none;">
+                <label for="endTime">Dibuka sampai jam:</label>
+                <input type="time" id="endTime" required>
+                <button id="submitAttendance" class="btn">Submit</button>
+            </div>
+
+            <div id="activeAttendance" class="active-attendance">
+                <h3>Absensi Aktif</h3>
+                <ul id="activeAttendanceList" class="attendance-list">
+                </ul>
+            </div>
+
+            <button id="viewHistory" class="btn">Lihat History Absensi</button>
+
+            <div id="historyModal" class="modal" style="display: none;">
+                <div class="modal-content">
+                    <span class="close" id="closeHistory">&times;</span>
+                    <h3>History Absensi</h3>
+                    <ul id="historyList" class="attendance-list">
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="permission" class="section">
+            <h2>Pengajuan Izin</h2>
+        
+            <div id="izinContainer"></div>
+
+            <div id="permissionRequests" class="permission-requests">
+                <ul id="permissionList" class="permission-list">
+                </ul>
+            </div>
+        </section>
+
+
+
+        <section id="salary" class="section">
+            <h2>Hitung Gaji</h2>
+            <form id="salaryForm" class="grid-form">
+                <div class="grid-row">
+                    <div class="grid-item">
+                        <label for="employeeName">Nama Karyawan:</label>
+                        <input type="text" name="employeeName" id="employeeName" required>
+                    </div>
+                    <div class="grid-item">
+                        <label for="month">Bulan:</label>
+                        <select id="month" name="month" required>
+                            <option value="">Pilih Bulan</option>
+                            <option value="1">January</option>
+                            <option value="2">February</option>
+                            <option value="3">March</option>
+                            <option value="4">April</option>
+                            <option value="5">May</option>
+                            <option value="6">June</option>
+                            <option value="7">July</option>
+                            <option value="8">August</option>
+                            <option value="9">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid-row">
+                    <div class="grid-item">
+                        <label for="dailyRate">Gaji Per Hari:</label>
+                        <input type="number" id="dailyRate" name="dailyRate" required>
+                    </div>
+                    <div class="grid-item">
+                        <label for="bonus">Bonus:</label>
+                        <input type="number" id="bonus" name="bonus" required>
+                    </div>
+                    <div class="grid-item">
+                        <label for="potongan">Potongan:</label>
+                        <input type="number" id="potongan" name="potongan" required>
+                    </div>
+                    <div class="grid-item">
+                        <button type="submit" class="btn">Hitung Gaji</button>
+                        <button type="button" id="verifySalary" class="btn">Verifikasi Gaji</button>
+                    </div>
+                    
+                </div>
+            </form>
+            <p id="salaryResult" class="result"></p>
+        </section>
+
+
+        <section id="employees" class="section">
+            <h2>Informasi Karyawan</h2>
+            <ul id="employeeList" class="employee-list">
+                <li>Nama: John Doe, Posisi: Manager</li>
+                <li>Nama: Jane Smith, Posisi: Developer</li>
+                <li>Nama: Alex Brown, Posisi: Designer</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 Payroll System</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="permission_handling.js"></script>
+        <script src="open_attendance.js"></script>
+        <script src="calculate_salary.js"></script>
+        <script src="salary_verification.js"></script>
+
+</body>
+
+</html>
